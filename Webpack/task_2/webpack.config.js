@@ -1,5 +1,4 @@
 const path = require('path');
-// const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 
 module.exports = {
   entry: './js/dashboard_main.js',
@@ -18,52 +17,19 @@ module.exports = {
           'css-loader'
         ]
       },
-      { 
-        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-        type: 'asset/resource',
-      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true, // webpack@1.x
+              disable: true, // webpack@2.x and newer
+            },
+          },
+        ],
+      }
     ],
   },
-  // optimization: {
-  //   minimizer: [
-  //     "...",
-  //     new ImageMinimizerPlugin({
-  //       minimizer: {
-  //         implementation: ImageMinimizerPlugin.imageminMinify,
-  //         options: {
-  //           // Lossless optimization with custom option
-  //           // Feel free to experiment with options for better result for you
-  //           plugins: [
-  //             ["gifsicle", { interlaced: true }],
-  //             ["jpegtran", { progressive: true }],
-  //             ["optipng", { optimizationLevel: 5 }],
-  //             // Svgo configuration here https://github.com/svg/svgo#configuration
-  //             [
-  //               "svgo",
-  //               {
-  //                 plugins: [
-  //                   {
-  //                     name: "preset-default",
-  //                     params: {
-  //                       overrides: {
-  //                         removeViewBox: false,
-  //                         addAttributesToSVGElement: {
-  //                           params: {
-  //                             attributes: [
-  //                               { xmlns: "http://www.w3.org/2000/svg" },
-  //                             ],
-  //                           },
-  //                         },
-  //                       },
-  //                     },
-  //                   },
-  //                 ],
-  //               },
-  //             ],
-  //           ],
-  //         },
-  //       },
-  //     }),
-  //   ],
-  // },
 };

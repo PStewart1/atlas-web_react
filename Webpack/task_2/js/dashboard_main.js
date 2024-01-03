@@ -19,9 +19,5 @@ $(document).ready(function () {
 
   $('button').on('click', _.debounce(updateCounter, 500,));
 
-  // Create new element
-  // const logo = $('<div id="logo"></div>')
-
-  // Insert the new element at the top of the body
   $('<div id="logo"></div>').insertBefore("p:first");
 });
