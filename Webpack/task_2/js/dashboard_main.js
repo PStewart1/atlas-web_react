@@ -1,0 +1,27 @@
+import $ from "jquery";
+import _ from "lodash";
+import '../css/main.css';
+
+
+$(document).ready(function () {
+
+  $('body').append('<p>Holberton Dashboard</p>');
+  $('body').append('<p>Dashboard data for the students</p>');
+  $('body').append('<button>Click here to get started</button>');
+  $('body').append('<p id="count"></p>');
+  $('body').append('<p>Copyright - Holberton School</p>');
+
+  let count = 0;
+  function updateCounter() {
+    count++;
+    $('#count').text(`${count} clicks on the button`);
+  }
+
+  $('button').on('click', _.debounce(updateCounter, 500,));
+
+  // Create new element
+  // const logo = $('<div id="logo"></div>')
+
+  // Insert the new element at the top of the body
+  $('<div id="logo"></div>').insertBefore("p:first");
+});
