@@ -131,5 +131,5 @@ out
 Webpack/task_0/dist/main.js
 # Webpack/task_1/public/bundle.js 
 *.LICENSE.txt
-public/
+Webpack/*/public/
 
