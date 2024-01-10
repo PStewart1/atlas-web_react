@@ -1,17 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import {Notifications} from './Notifications.js';
-import App from './App.js';
-import reportWebVitals from './reportWebVitals.js';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Notifications } from "./Notifications/Notifications.js";
+import App from "./App/App.js";
+import reportWebVitals from "./reportWebVitals.js";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <div id='root-notifications'>
+    <div id="root-notifications">
       <Notifications />
     </div>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
   // document.getElementById('root')
 );
 

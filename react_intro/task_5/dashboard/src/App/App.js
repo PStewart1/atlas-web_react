@@ -1,7 +1,7 @@
-import logo from './holberton-logo.jpg';
-import './App.css';
-import { getFullYear, getFooterCopy } from './utils.js';
-import React from 'react';
+import logo from "./holberton-logo.jpg";
+import "./App.css";
+import { getFullYear, getFooterCopy } from "../utils/utils.js";
+import React from "react";
 
 function App() {
   return (
@@ -30,10 +30,11 @@ function App() {
         <button>OK</button>
       </div>
       <div className="App-footer">
-        <p>Copyright {getFullYear()} - {getFooterCopy()}</p>
+        <p>
+          Copyright {getFullYear()} - {getFooterCopy()}
+        </p>
       </div>
     </div>
-    
   );
 }
 
