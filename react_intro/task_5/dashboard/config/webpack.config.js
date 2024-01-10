@@ -1,62 +1,47 @@
 const path = require('path');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
+  mode: 'development',
   entry: './src/index.js',
   output: {
-    filename: 'bundle.js',
     path: path.resolve(__dirname, '../dist'),
-    // clean: true,
+    filename: 'bundle.js',
   },
-  mode: 'development',
-
-  devtool: 'inline-source-map',
   devServer: {
-    static: {
-      directory: path.join(__dirname, '../dist'),
-    },
+    static: path.resolve(__dirname, '../dist'),
     hot: true,
     compress: true,
-    port: 3000,
   },
-
-  // plugins: [
-    // new HtmlWebpackPlugin({
-    //     hash: true,
-    //     filename: './index.html' //relative to root of the application
-    // }),
-    // new CleanWebpackPlugin(),
-  // ],
-
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: 'all',
-  //   },
-  // },
-
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
+        use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(gif|png|jpe?g|svg)$/i,
+        test: /\.(jpe?g|png|gif|svg)$/,
         use: [
           'file-loader',
           {
             loader: 'image-webpack-loader',
             options: {
-              bypassOnDebug: true, // webpack@1.x
-              disable: true, // webpack@2.x and newer
+              bypassOnDebug: true,
+              disable: true,
             },
           },
         ],
-      }
+      },
+      {
+        test: /\.js?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
+      },
     ],
   },
 };
