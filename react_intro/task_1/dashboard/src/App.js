@@ -1,6 +1,6 @@
 import logo from './holberton-logo.jpg';
 import './App.css';
-import { getFullYear, getFooterCopy } from './utils.css';
+import { getFullYear, getFooterCopy } from './utils.js';
 
 function App() {
   return (
