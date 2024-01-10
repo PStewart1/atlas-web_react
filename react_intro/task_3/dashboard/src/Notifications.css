@@ -1,0 +1,16 @@
+
+.Notifications {
+  padding: 1rem;
+border: 1px red dashed;
+  border-radius: 5px;
+padding: 1rem;
+  overflow: auto;
+}
+
+[data-priority="default"] {
+color: blue;
+}
+
+[data-priority="urgent"] {
+color: red;
+}
