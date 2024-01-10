@@ -1,15 +1,16 @@
 
 .Notifications {
-  border: 2px solid #f00808;
-  border-radius:10px;
-  padding: 10px;
-  /* margin: 10px; */
-  /* float: right;
-  clear: right;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
-  width: 300px;
-  height: 100px; */
+  padding: 1rem;
+border: 1px red dashed;
+  border-radius: 5px;
+padding: 1rem;
+  overflow: auto;
+}
+
+[data-priority="default"] {
+color: blue;
+}
+
+[data-priority="urgent"] {
+color: red;
 }
