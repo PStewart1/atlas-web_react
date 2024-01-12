@@ -35,7 +35,7 @@ describe('<NotificationItem />', () => {
   // it('Check that when simulating a click on the component, the spy is called with the right ID argument', () => {
   //   const wrapper = shallow(<NotificationItem id={1} />);
   //   const instance = wrapper.instance();
-  //   const spy = jest.spyOn(global.console, 'log');
+  //   const spy = jest.spyOn(console, 'log');
   //   wrapper.find('li').simulate('click');
   //   // expect(spy).toHaveBeenCalled();
   //   expect(spy).toHaveBeenCalledWith('Notification 1 has been marked as read');
