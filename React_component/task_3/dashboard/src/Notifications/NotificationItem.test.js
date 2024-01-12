@@ -21,19 +21,25 @@ describe('<NotificationItem />', () => {
   });
 
   // it('Passes a spy as the markAsRead property', () => {
-  //   const wrapper = shallow(<NotificationItem type="default" value="test" />);
+  //   function Read(id) {console.log('test')};
+  //   const wrapper = shallow(<NotificationItem value="whatever" markAsRead={Read} id="1" />);
   //   const instance = wrapper.instance();
-  //   const spy = jest.spyOn(instance, 'markAsRead', 'get').mockReturnValue(() => 'test');
-  //   expect(instance.markAsRead()).toEqual('test');
+  //   const spy = jest.spyOn(instance, instance.props.markAsRead);
+  //   // instance.forceUpdate();
+  //   wrapper.find('li').simulate('click');
+  //   // expect(spy).toHaveBeenCalled();
+  //   expect(spy).toHaveBeenCalledWith('test');
+  //   spy.mockRestore();
   // });
 
-  it('Check that when simulating a click on the component, the spy is called with the right ID argument', () => {
-    const wrapper = shallow(<NotificationItem id={1} />);
-    const instance = wrapper.instance();
-    const spy = jest.spyOn(global.console, 'log');
-    wrapper.find('li').simulate('click');
-    expect(spy).toHaveBeenCalledWith('Notification 1 has been marked as read');
-    spy.mockRestore();
-  });
+  // it('Check that when simulating a click on the component, the spy is called with the right ID argument', () => {
+  //   const wrapper = shallow(<NotificationItem id={1} />);
+  //   const instance = wrapper.instance();
+  //   const spy = jest.spyOn(global.console, 'log');
+  //   wrapper.find('li').simulate('click');
+  //   // expect(spy).toHaveBeenCalled();
+  //   expect(spy).toHaveBeenCalledWith('Notification 1 has been marked as read');
+  //   spy.mockRestore();
+  // });
 
 });

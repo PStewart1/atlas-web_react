@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class NotificationItem extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.markAsRead = this.props.markAsRead.bind(this);
+  // }
+
   render() {
       const { id, type, html, value, markAsRead } = this.props;
     if (value) {
