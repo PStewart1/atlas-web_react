@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import NotificationItem from './NotificationItem.js';
-// import '../../config/setupTests.js';
 
 describe('<NotificationItem />', () => {
   it('renders an <NotificationItem /> component', () => {

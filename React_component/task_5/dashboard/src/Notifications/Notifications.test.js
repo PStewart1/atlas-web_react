@@ -82,4 +82,26 @@ describe('notification', () => {
     expect(logSpy).toHaveBeenCalledWith(1);
     logSpy.mockRestore();
   });
+
+  it('verifies that when updating the props of the component with the same list, the component doesnt rerender', () => {
+    const wrapper = shallow(<Notifications listNotifications={listNotifications} displayDrawer={true} />);
+    const shouldComponentUpdate = jest.spyOn(
+      Notifications.prototype,
+      'shouldComponentUpdate'
+    );
+    wrapper.setProps({ listNotifications: listNotifications });
+    expect(shouldComponentUpdate).toHaveReturnedWith(false);
+    shouldComponentUpdate.mockRestore();
+  });
+
+  it('verifies that when updating the props of the component with a longer list, the component does rerender', () => {
+    const wrapper = shallow(<Notifications listNotifications={listNotifications} displayDrawer={true} />);
+    const shouldComponentUpdate = jest.spyOn(
+      Notifications.prototype,
+      'shouldComponentUpdate'
+    );
+    wrapper.setProps({ listNotifications: listNotifications.concat({ id: 4, type: 'default', value: 'New course available' }) });
+    expect(shouldComponentUpdate).toHaveReturnedWith(true);
+    shouldComponentUpdate.mockRestore();
+  });
 });
