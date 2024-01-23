@@ -1,7 +1,9 @@
 import Login from './Login';
 import React from 'react';
 import { shallow } from 'enzyme';
-// import '../../config/setupTests.js';
+import {StyleSheetTestUtils} from "aphrodite";
+
+StyleSheetTestUtils.suppressStyleInjection();
 
 describe('<Login />', () => {
   it('Tests that Login renders without crashing', () => {

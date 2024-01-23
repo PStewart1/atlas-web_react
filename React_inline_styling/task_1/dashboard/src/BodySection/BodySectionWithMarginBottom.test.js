@@ -1,6 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import BodySectionWithMarginBottom from './BodySectionWithMarginBottom';
+import {StyleSheetTestUtils} from "aphrodite";
+
+StyleSheetTestUtils.suppressStyleInjection();
 
 describe('BodySectionWithMarginBottom', () => {
   it('renders correctly the the children and one h2 element', () => {

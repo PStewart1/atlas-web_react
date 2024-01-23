@@ -6,6 +6,9 @@ import App from './App';
 import { shallow } from 'enzyme';
 import React from 'react';
 import sinon from 'sinon';
+import {StyleSheetTestUtils} from "aphrodite";
+
+StyleSheetTestUtils.suppressStyleInjection();
 
 window.alert = sinon.spy();
 

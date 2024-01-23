@@ -1,6 +1,9 @@
 import React from "react";
 import { shallow } from "enzyme";
 import CourseList from "./CourseList";
+import {StyleSheetTestUtils} from "aphrodite";
+
+StyleSheetTestUtils.suppressStyleInjection();
 
 describe("CourseList", () => {
   it("renders without crashing", () => {

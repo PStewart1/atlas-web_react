@@ -2,6 +2,9 @@ import Notifications from './Notifications';
 import { shallow } from 'enzyme';
 import React from 'react';
 import { getLatestNotification } from '../utils/utils';
+import {StyleSheetTestUtils} from "aphrodite";
+
+StyleSheetTestUtils.suppressStyleInjection();
 
 
 describe('notification', () => {
