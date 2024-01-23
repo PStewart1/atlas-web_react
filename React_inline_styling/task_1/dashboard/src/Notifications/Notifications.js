@@ -1,10 +1,10 @@
 import React from "react";
-import "./Notifications.css";
 import closeIcon from "../assets/close-icon.png";
-// import { getLatestNotification } from "../utils/utils.js";
 import NotificationItem from "./NotificationItem.js";
 import PropTypes from "prop-types";
 import NotificationItemShape from "./NotificationItemShape.js";
+import { StyleSheet, css } from 'aphrodite';
+
 
 class Notifications extends React.Component {
   constructor(props) {
@@ -21,13 +21,30 @@ class Notifications extends React.Component {
     console.log(`Notification ${id} has been marked as read`);
   }
   render() {
-    
     const { displayDrawer, listNotifications } = this.props;
+    const styles = StyleSheet.create({
+      menuItem: {
+        marginRight: '1rem',
+      },
+      noteBox: {
+        border: '1px red dashed',
+        padding: '1rem',
+        margin: '1rem',
+      },
+      notes: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'end',
+        position: 'absolute',
+        right: 0,
+      },
+    });
+
   return (
-    <div className="notification-menu">
-      <div className="menuItem">Your notifications</div>
+    <div className={`notification-menu ${css(styles.notes)}`}>
+      <div className={`menuItem ${css(styles.menuItem)}`}>Your notifications</div>
       {displayDrawer && (
-      <div className="Notifications">
+      <div className={`Notifications ${css(styles.noteBox)}`}>
         {listNotifications.length ? (
             <p>Here is the list of notifications</p>
           ) : (

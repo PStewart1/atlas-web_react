@@ -42,16 +42,20 @@ class App extends React.Component {
     ];
 
     const styles = StyleSheet.create({
-      CourseListContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100vh',
+      body: {
+        margin: '0px',
+        height: '500px',
+        padding: '2% 3%',
       },
-    
-      th: {
-        border: '1px solid grey',
-        borderCollapse: 'collapse',
-      }
+      footer: {
+        textAlign: 'center',
+        fontStyle: 'italic',
+        borderTop: 'solid #e0354b',
+        bottom: '0',
+        position: 'fixed',
+        width: '100%',
+
+      },
     });
 
     return (
@@ -59,15 +63,19 @@ class App extends React.Component {
       <Notifications listNotifications={listNotifications}/> 
       <div className="App">
         <Header />
-        {isLoggedIn ? 
-        <BodySectionWithMarginBottom title='Course list' children={
-          <CourseList className={css(styles.CourseListContainer, styles.th)} listCourses={listCourses}/>
-        }/> 
-        :
-        <BodySectionWithMarginBottom title='Log in to continue' children={<Login/>} />
-        }
-        <BodySection title='News from the School' children={<p>Some random news</p>}/>
-        <Footer />
+        <div className={`App-body ${css(styles.body)}`}>
+          {isLoggedIn ? 
+          <BodySectionWithMarginBottom title='Course list' children={
+            <CourseList  listCourses={listCourses}/>
+          }/> 
+          :
+          <BodySectionWithMarginBottom title='Log in to continue' children={<Login/>} />
+          }
+          <BodySection title='News from the School' children={<p>Some random news</p>}/>
+        </div>
+        <footer className={`App-footer ${css(styles.footer)}`}>
+          <Footer />
+        </footer>
       </div>
       </React.Fragment>
     );
