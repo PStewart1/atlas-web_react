@@ -39,8 +39,8 @@ class Notifications extends React.Component {
           border: 'none',
           padding: '0',
           margin: '0',
-          width: displayDrawer ? '1000vw' : '0vw',
-          height: displayDrawer ? '1000vw' : '0vw',
+          width: displayDrawer ? '100vw' : '0vw',
+          height: displayDrawer ? '100vw' : '0vw',
           position: 'absolute',
           backgroundColor: 'white',
           // zIndex: '1',
@@ -51,8 +51,8 @@ class Notifications extends React.Component {
         border: 0,
         background: "white",
         position: "absolute",
-        right: "35px",
-        top: "50px",
+        right: "20px",
+        top: "10px",
         zIndex: '1',
       },
     });
@@ -86,7 +86,7 @@ class Notifications extends React.Component {
         
         <button className={`button ${css(styles.button)}`}
           aria-label="Close" onClick={() => console.log("Close button has been clicked")}>
-            <img src={closeIcon} height="15px" width="15" alt="close icon" />
+            <img src={closeIcon} height="10px" width="10px" alt="close icon" />
         </button>
         
       </div>
