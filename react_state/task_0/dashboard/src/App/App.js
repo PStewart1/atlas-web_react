@@ -11,13 +11,22 @@ import BodySection from "../BodySection/BodySection.js";
 import { StyleSheet, css } from 'aphrodite';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayDrawer: false,
+    };
+    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
+    this.handleHideDrawer = this.handleHideDrawer.bind(this);
+  };
+
   componentDidMount() {
     window.addEventListener('keydown', this.handleKeydown);
-  }
+  };
 
   componentWillUnmount() {
     window.removeEventListener('keydown', this.handleKeydown);
-  }
+  };
 
   handleKeydown = (event) => {
     if (event.ctrlKey && event.key === 'h') {
@@ -26,8 +35,19 @@ class App extends React.Component {
       logOut();
     }
   };
+
+  handleDisplayDrawer = () => {
+    this.setState({ displayDrawer: true });
+  };
+
+  handleHideDrawer = () => {
+    this.setState({ displayDrawer: false });
+  };
+
   render() {
     const { isLoggedIn } = this.props;
+    const { displayDrawer } = this.state;
+
     const listCourses = [
       { id: 1, name: 'ES6', credit: 60 },
       { id: 2, name: 'Webpack', credit: 20 },
@@ -58,7 +78,12 @@ class App extends React.Component {
 
     return (
       <React.Fragment>
-      <Notifications listNotifications={listNotifications}/> 
+      <Notifications 
+        listNotifications={listNotifications}
+        displayDrawer={displayDrawer}
+        handleDisplayDrawer={this.handleDisplayDrawer}
+        handleHideDrawer={this.handleHideDrawer}
+      /> 
       <div className="App">
         <header className="App-header">
           <Header />

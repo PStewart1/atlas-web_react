@@ -14,7 +14,8 @@ class Notifications extends React.Component {
 
   shouldComponentUpdate(nextProps) {
     // Only update if the new list is longer than the old list
-    return nextProps.listNotifications.length > this.props.listNotifications.length;
+    return nextProps.listNotifications.length > this.props.listNotifications.length
+      || nextProps.displayDrawer != this.props.displayDrawer;
   }
 
   markAsRead(id) {
@@ -22,7 +23,7 @@ class Notifications extends React.Component {
   }
 
   render() {
-    const { displayDrawer, listNotifications } = this.props;
+    const { displayDrawer, listNotifications, handleDisplayDrawer, handleHideDrawer  } = this.props;
 
     const opacityKeyframes = {
       'from': {
@@ -95,7 +96,8 @@ class Notifications extends React.Component {
 
   return (
     <div className={`Notfication-menu `}>
-      <div className={`menuItem ${css(styles.menuItem)}`}>Your notifications</div>
+      <div className={`menuItem ${css(styles.menuItem)}`} onClick={handleDisplayDrawer}>
+        Your notifications</div>
       {displayDrawer && (
       <div className={`Notifications ${css(styles.noteBox)}`}>
         {listNotifications.length ? (
@@ -122,7 +124,8 @@ class Notifications extends React.Component {
         
         <button className={`button ${css(styles.button)}`}
           aria-label="Close" onClick={() => console.log("Close button has been clicked")}>
-            <img src={closeIcon} height="10px" width="10px" alt="close icon" />
+            <img src={closeIcon} height="10px" width="10px" alt="close icon"
+            onClick={handleHideDrawer} />
         </button>
         
       </div>
@@ -133,12 +136,16 @@ class Notifications extends React.Component {
 
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
-  listNotifications: PropTypes.arrayOf(NotificationItemShape)
+  listNotifications: PropTypes.arrayOf(NotificationItemShape),
+  handleDisplayDrawer: PropTypes.func,
+  handleHideDrawer: PropTypes.func,
 };
 
 Notifications.defaultProps = {
   displayDrawer: false,
-  listNotifications: []
+  listNotifications: [],
+  handleDisplayDrawer: () => {},
+  handleHideDrawer: () => {},
 };
 
 export default Notifications;
