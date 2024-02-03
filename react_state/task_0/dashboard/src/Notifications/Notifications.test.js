@@ -95,4 +95,20 @@ describe('notification', () => {
     expect(shouldComponentUpdate).toHaveReturnedWith(true);
     shouldComponentUpdate.mockRestore();
   });
+
+  it('verifies that clicking on the menu item calls handleDisplayDrawer', () => {
+    const handleDisplayDrawer = jest.fn();
+    const wrapper = shallow(<Notifications handleDisplayDrawer={handleDisplayDrawer} />);
+    wrapper.find('.menuItem').simulate('click');
+    expect(handleDisplayDrawer).toHaveBeenCalled();
+  });
+
+  it('verifies that clicking on the button calls handleHideDrawer', () => {
+    const handleHideDrawer = jest.fn();
+    const wrapper = shallow(<Notifications displayDrawer={true}
+      handleHideDrawer={handleHideDrawer} />);
+    wrapper.find('img').simulate('click');
+    expect(handleHideDrawer).toHaveBeenCalled();
+  });
+
 });
