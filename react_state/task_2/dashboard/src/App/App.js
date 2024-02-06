@@ -4,18 +4,26 @@ import Login from "../Login/Login.js";
 import Footer from "../Footer/Footer.js";
 import Notifications from "../Notifications/Notifications.js";
 import CourseList from "../CourseList/CourseList.js";
-import PropTypes from 'prop-types';
 import { getLatestNotification } from "../utils/utils.js";
 import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom.js";
 import BodySection from "../BodySection/BodySection.js";
 import { StyleSheet, css } from 'aphrodite';
+import { AppContext } from "./AppContext.js";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       displayDrawer: false,
+      user: {
+        email: '',
+        password: '',
+        isLoggedIn: false
+      },
+      logOut: () => this.logOut()
     };
+    this.login = this.login.bind(this);
+    this.logOut = this.logOut.bind(this);
     this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
     this.handleHideDrawer = this.handleHideDrawer.bind(this);
   };
@@ -31,7 +39,7 @@ class App extends React.Component {
   handleKeydown = (event) => {
     if (event.ctrlKey && event.key === 'h') {
       alert('Logging you out');
-      const { logOut } = this.props;
+      const { logOut } = this.state;
       logOut();
     }
   };
@@ -44,9 +52,16 @@ class App extends React.Component {
     this.setState({ displayDrawer: false });
   };
 
+  login(email, password) {
+    this.setState({ user: { email, password, isLoggedIn: true } });
+  };
+
+  logOut() {
+    this.setState({ user: { email: '', password: '', isLoggedIn: false } });
+  };
+
   render() {
-    const { isLoggedIn } = this.props;
-    const { displayDrawer } = this.state;
+    const { displayDrawer, user, logOut } = this.state;
 
     const listCourses = [
       { id: 1, name: 'ES6', credit: 60 },
@@ -77,44 +92,33 @@ class App extends React.Component {
     });
 
     return (
-      <React.Fragment>
-      <Notifications 
-        listNotifications={listNotifications}
-        displayDrawer={displayDrawer}
-        handleDisplayDrawer={this.handleDisplayDrawer}
-        handleHideDrawer={this.handleHideDrawer}
-      /> 
-      <div className="App">
+      <AppContext.Provider value={this.state}>
+        <Notifications 
+          listNotifications={listNotifications}
+          displayDrawer={displayDrawer}
+          handleDisplayDrawer={this.handleDisplayDrawer}
+          handleHideDrawer={this.handleHideDrawer}
+        /> 
         <header className="App-header">
           <Header />
         </header>
-        <body className={`App-body ${css(styles.body)}`}>
-          {isLoggedIn ? 
+        <div className={`App-body ${css(styles.body)}`}>
+          {user.isLoggedIn ? 
           <BodySectionWithMarginBottom title='Course list' children={
             <CourseList  listCourses={listCourses}/>
           }/> 
-          :
-          <BodySectionWithMarginBottom title='Log in to continue' children={<Login/>} />
+           : 
+          <BodySectionWithMarginBottom title='Log in to continue' children={
+            <Login login={this.login} />
+          } />
           }
           <BodySection title='News from the School' children={<p>Some random news</p>}/>
-        </body>
+        </div>
         <footer className={`App-footer ${css(styles.footer)}`}>
           <Footer />
         </footer>
-      </div>
-      </React.Fragment>
+      </AppContext.Provider>
     );
 }};
-
-App.propTypes = {
-  isLoggedIn: PropTypes.bool,
-  logOut: PropTypes.func,
-};
-App.defaultProps = {
-  isLoggedIn: false,
-  logOut: () => {},
-};
-
-
 
 export default App;

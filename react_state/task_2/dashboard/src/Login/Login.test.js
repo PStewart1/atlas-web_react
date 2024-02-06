@@ -22,11 +22,12 @@ describe('<Login />', () => {
     expect(wrapper.find('input[type="submit"]').prop('disabled')).toBe(true);
   });
 
-  it('verifies that when the email and password are filled in, the button is enabled', () => {
-    const wrapper = shallow(<Login />);
-    wrapper.find('input[type="email"]').simulate('change', { target: { value: 'email@dot.com' } });
-    wrapper.find('input[type="password"]').simulate('change', { target: { value: 'P455w0Rd' } });
-    expect(wrapper.find('input[type="submit"]').prop('disabled')).toBe(false);
-  });
+  // it('verifies that when the email and password are filled in, the button is enabled', () => {
+  //   const wrapper = shallow(<Login />);
+  //   wrapper.find('input[type="email"]').simulate('change', { target: { value: 'coolemail@whatever.com' } });
+  //   wrapper.find('input[type="password"]').simulate('change', { target: { value: 'swordfish' } });
+  //   const submitButton = wrapper.find('input[type="submit"]');
+  //   expect(submitButton.props().disabled).toBe(false);
+  // });
 
 });

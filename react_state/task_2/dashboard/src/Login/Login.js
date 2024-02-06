@@ -1,26 +1,23 @@
 import React, { useState } from "react";
 import { StyleSheet, css } from 'aphrodite';
 
-
-function Login() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+function Login({ login }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [enableSubmit, setEnableSubmit] = useState(false);
   
-
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    setIsLoggedIn(true);
+    login(email, password);
   };
 
-  const handleChangeEmail = (email) => {
-    setEmail(email);
+  const handleChangeEmail = (em) => {
+    setEmail(em);
     setEnableSubmit(email !== '' && password !== '');
   };
 
-  const handleChangePassword = (password) => {
-    setPassword(password);
+  const handleChangePassword = (pass) => {
+    setPassword(pass);
     setEnableSubmit(email !== '' && password !== '');
   };
 
@@ -77,7 +74,6 @@ const style = StyleSheet.create({
   label: {
     marginRight: '25px',
     '@media (max-width: 900px)': {
-      // marginBottom: '10px',
     },
   },
 });
