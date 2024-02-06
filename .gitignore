@@ -133,3 +133,5 @@ Webpack/*/public/
 **/dist/*
 !favicon.ico
 !index.html
+!notifications.json
+!login-success.json
