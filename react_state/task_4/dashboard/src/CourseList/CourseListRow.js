@@ -3,22 +3,6 @@ import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite';
 import { useState } from 'react';
 
-const style = StyleSheet.create({
-  tr: {
-    backgroundColor: '#f5f5f5ab',
-    textAlign: 'left',
-  },
-  th: {
-    borderBottom: '2px solid gray',
-    borderTop: '2px solid gray',
-    textAlign: 'center',
-    backgroundColor: '#deb5b545',
-  },
-  rowChecked: {
-    backgroundColor: '#e6e4e4',
-  },
-});
-
 function CourseListRow({ isHeader, textFirstCell, textSecondCell }) {
   const [checked, setChecked] = useState(false);
   
@@ -26,7 +10,6 @@ function CourseListRow({ isHeader, textFirstCell, textSecondCell }) {
     setChecked(!checked);
   };
 
-  // const { first } = this.props
   if (isHeader && !textSecondCell) return (
     <>
       <tr className={css(style.th)}>
@@ -51,6 +34,22 @@ function CourseListRow({ isHeader, textFirstCell, textSecondCell }) {
     </>
   )
 };
+
+const style = StyleSheet.create({
+  tr: {
+    backgroundColor: '#f5f5f5ab',
+    textAlign: 'left',
+  },
+  th: {
+    borderBottom: '2px solid gray',
+    borderTop: '2px solid gray',
+    textAlign: 'center',
+    backgroundColor: '#deb5b545',
+  },
+  rowChecked: {
+    backgroundColor: '#e6e4e4',
+  },
+});
 
 CourseListRow.propTypes = {
   isHeader: PropTypes.bool,
