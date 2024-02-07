@@ -1,6 +1,6 @@
 import {LOGIN, LOGOUT, DISPLAY_NOTIFICATION_DRAWER, HIDE_NOTIFICATION_DRAWER, LOGIN_SUCCESS, LOGIN_FAILURE} from '../actions/uiActionTypes';
 import {initialState, uiReducer} from '../reducers/uiReducer';
-import { toJS } from 'immutable';
+import { Map } from 'immutable';
 
 describe('uiReducer', () => {
     it('verifies the state returned by the uiReducer function equals the initial state when no action is passed', () => {
