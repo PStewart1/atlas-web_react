@@ -15,7 +15,7 @@ export const unSelectCourse = (index) => {
   };
 };
 
-export const fetchCourseSuccess = (data) => {
+export const fetchCourseSuccess = () => {
   return {
     type: FETCH_COURSE_SUCCESS,
     data: [

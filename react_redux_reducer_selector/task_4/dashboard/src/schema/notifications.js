@@ -1,3 +1,4 @@
+import { func } from 'prop-types';
 import * as notes from '../../dist/notifications.json'
 import { schema, normalize } from 'normalizr';
 
@@ -12,5 +13,10 @@ export function getAllNotificationsByUser(userId) {
   const notesContext = notesList.map((note) => normalizedData.entities.messages[note.context]);
   return notesContext;
 };
+
+export function notificationsNormalizer(data) {
+  const normalizedNotes = normalize(data, [notification]);
+  return normalizedNotes.entities.notifications;
+}
 
 export { normalizedData };

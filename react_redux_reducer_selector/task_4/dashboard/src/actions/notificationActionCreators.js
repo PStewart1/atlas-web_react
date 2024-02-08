@@ -15,7 +15,7 @@ export const setNotificationFilter = (filter) => {
   }
 };
 
-export const fetchNotificationsSuccess = (data) => {
+export const fetchNotificationsSuccess = () => {
   return {
     type: FETCH_NOTIFICATIONS_SUCCESS,
     data: [
