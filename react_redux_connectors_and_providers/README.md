@@ -10,5 +10,19 @@
 *    How to use Redux’s dev tools to debug the state of your application
 
 --- 
-## Author 
+## Running the Project
+To run the project, you must first install the required node modules:
+`npm install`
+
+Then you can build the webpack in order create the necessary files to run thr server:
+`npm run build`
+
+To start the server and display the webpage:
+`npm start`
+
+To run all tests:
+`npm test`
+
+---
+### Author 
 #### Paul S.
