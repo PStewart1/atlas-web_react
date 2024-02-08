@@ -10,7 +10,7 @@
 *    How to use Redux’s dev tools to debug the state of your application
 
 --- 
-## Running the Project
+## Instructions
 To run the project, you must first install the required node modules:
 `npm install`
 
