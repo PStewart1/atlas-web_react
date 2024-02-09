@@ -5,6 +5,7 @@ import { AppContext } from "../App/AppContext.js";
 import { logout } from "../actions/uiActionCreators.js";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import {getIn} from 'immutable';
 
 export class Header extends React.Component {
   constructor(props) {
@@ -55,8 +56,8 @@ Header.propTypes = {
 
 export const mapStateToProps = (state) => {
   return {
-    user: state.get("user"),
-    isLoggedIn: state.get("isUserLoggedIn")
+    user: getIn(state, ['ui', 'user']),
+    isLoggedIn: getIn(state, ['ui', 'isUserLoggedIn']),
   };
 };
 

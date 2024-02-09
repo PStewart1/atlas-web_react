@@ -17,6 +17,7 @@ import { displayNotificationDrawer,
   loginRequest,
   logout
 } from "../actions/uiActionCreators.js";
+import {getIn} from 'immutable';
 
 
 export class App extends React.Component {
@@ -150,10 +151,10 @@ App.propTypes = {
 
 
 export const mapStateToProps = (state) => {
-  // const newState = uiReducer(state, { type: 'default' });
+  console.log(state);
   return {
-    isLoggedIn: state.get("isUserLoggedIn"),
-    displayDrawer: state.get("isNotificationDrawerVisible"),
+    isLoggedIn: getIn(state, ['ui', 'isUserLoggedIn']),
+    displayDrawer: getIn(state, ['ui', 'isNotificationDrawerVisible']),
   };
 };
 

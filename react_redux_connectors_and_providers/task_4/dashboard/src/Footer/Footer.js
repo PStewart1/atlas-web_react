@@ -4,6 +4,7 @@ import { getFullYear, getFooterCopy } from "../utils/utils.js";
 import { AppContext } from "../App/AppContext.js";
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import {getIn} from 'immutable';
 
 export class Footer extends React.Component {
   constructor(props) {
@@ -34,8 +35,8 @@ Footer.propTypes = {
 
 export const mapStateToProps = (state) => {
   return {
-    user: state.get("user"),
-    isLoggedIn: state.get("isUserLoggedIn")
+    user: getIn(state, ['ui', 'user']),
+    isLoggedIn: getIn(state, ['ui', 'isUserLoggedIn']),
   };
 };
 
