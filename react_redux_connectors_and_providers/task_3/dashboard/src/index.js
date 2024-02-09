@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App/App.js";
 import reportWebVitals from "./reportWebVitals.js";
 import { Provider } from "react-redux";
-import { legacy_createStore as createStore, applyMiddleware } from "redux";
+import { legacy_createStore as createStore, applyMiddleware, compose } from "redux";
 import { uiReducer, initialState } from "./reducers/uiReducer.js";
 import thunk from "redux-thunk";
 import { Map } from "immutable";
