@@ -8,7 +8,9 @@ import { uiReducer, initialState } from "./reducers/uiReducer.js";
 import thunk from "redux-thunk";
 import { Map } from "immutable";
 
-const store = createStore(uiReducer, Map(initialState), applyMiddleware(thunk));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(uiReducer, Map(initialState), composeEnhancers(applyMiddleware(thunk)));
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
